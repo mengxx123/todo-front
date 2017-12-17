@@ -6,11 +6,7 @@
             <main class="page-body">
                 <div class="container container-main">
                     <div>
-                        <div>高效TODO v0.2</div>
-                        <h2>新版特性</h2>
-                        <ul>
-                            <li>声音提醒。</li>
-                        </ul>
+                        <div>TODO v1.0</div>
                     </div>
 
                 </div>
