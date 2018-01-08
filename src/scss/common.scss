@@ -1,24 +1,11 @@
+html,
+body,
+#app {
+    height: 100%;
+}
 body {
-    padding-top: 80px;
-    font-size: 16px;
 }
-.container-main {
-    padding-top: 16px;
-}
-.page-nav {
-    position: absolute;
-    top: 0;
-    width: 320px;
-    bottom: 0;
-    border-right: 1px solid #eee;
-}
-.page-content {
-    position: absolute;
-    top: 0;
-    left: 320px;
-    right: 0;
-    bottom: 0;
-}
+
 .page-footer {
     display: none;
     position: absolute;
@@ -43,22 +30,8 @@ body {
         display: none;
     }
     .page-content {
-        left: 0;
+        left: 0 !important;
     }
-}
-
-.tt-header {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-}
-
-.tt-footer {
-    height: 100px;
-    padding-top: 20px;
-    text-align: center;
-    border-top: 1px solid #ccc;
 }
 
 /* 待办事项 */
@@ -103,40 +76,6 @@ body {
     display: none;
 }
 @media screen and (max-width: 767px) {
-    .navbar-collapse {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        width: 400px;
-        max-width: 80%;
-        height: 100% !important;
-        padding: 0;
-        max-height: 100% !important;
-        background-color: #fff;
-        border-right: 1px solid #999;
-    }
-    .navbar-collapse .navbar-nav {
-        margin: 0;
-    }
-    .navbar-collapse .nav-item.active {
-        background-color: #eee;
-    }
-    .navbar-collapse .nav-item:hover {
-        background-color: #f1f1f1;
-    }
-    .navbar-collapse .nav-link {
-        padding: 16px;
-    }
-    .navbar-collapse-header {
-        display: block;
-        height: 200px;
-        background-color: #09c;
-    }
-    .navbar-collapse-header .avatar {
-        width: 80px;
-        height: 80px;
-        margin: 80px 0 10px 16px;
-        border-radius: 50%;
-    }
+
 
 }

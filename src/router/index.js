@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const About = resolve => require(['@/views/About'], resolve)
 const Todo = resolve => require(['@/views/Todo'], resolve)
+const CategoryDetail = resolve => require(['@/views/CategoryDetail'], resolve)
 const Tomato = resolve => require(['@/views/Tomato'], resolve)
 const Help = resolve => require(['@/views/Help'], resolve)
 
@@ -15,8 +16,14 @@ const APP_NAME = '云设'
 let routes = [
     {
         path: '/',
-        component: Tomato,
-        redirect: '/tomato'
+        component: Todo,
+        meta: {
+            title: '待办事项'
+        }
+    },
+    {
+        path: '/categories/:id',
+        component: CategoryDetail
     },
     {
         path: '/tomato',
@@ -33,13 +40,6 @@ let routes = [
         }
     },
     {
-        path: '/todo',
-        component: Todo,
-        meta: {
-            title: '待办事项'
-        }
-    },
-    {
         path: '/help',
         component: Help,
         meta: {
@@ -47,15 +47,11 @@ let routes = [
         }
     },
     {
-        path: '/404',
+        path: '*',
         component: Error404,
         meta: {
             title: '页面找不到了'
         }
-    },
-    {
-        path: '*',
-        redirect: '/404'
     }
 ]
 

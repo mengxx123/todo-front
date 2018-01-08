@@ -1,8 +1,8 @@
 <template>
     <header class="page-header">
-        <mu-appbar :title="title">
-            <mu-icon-button icon="menu" slot="left"/>
-        </mu-appbar>
+        <ui-appbar :title="title">
+            <ui-icon-button icon="menu" slot="left"/>
+        </ui-appbar>
     </header>
 </template>
 

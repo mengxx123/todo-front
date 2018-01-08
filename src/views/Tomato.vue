@@ -1,35 +1,26 @@
 <template>
-    <div class="page-tomato">
-        <ui-nav></ui-nav>
-        <div class="page-content">
-            <ui-header title="番茄工作法"></ui-header>
-            <main class="page-body">
-                <div class="container container-main">
-                    <div class="row">
-                        <div class="col-md-6 col-timer">
-                            <div class="tip" v-if="showTip">夜深了，注意休息</div>
-                            <div class="label label-success" v-if="isWorkTime">工作时间</div>
-                            <div class="label label-warning" v-if="!isWorkTime">休息时间</div>
-                            <div class="tt-countdown">{{timeStr}}</div>
-                            <div class="input-minute input-group">
-                                <input class="form-control" placeholder="工作时间" v-model="formData.minute">
-                                <div class="input-group-addon">分钟</div>
-                            </div>
-                            <button class="btn-start btn btn-success" type="button" @click="startCount">开始计时</button>
-                        </div>
-                        <div class="col-md-6">
-                        </div>
-                    </div>
+    <ui-page name="tomato" title="番茄工作法">
+        <div class="row">
+            <div class="col-md-6 col-timer">
+                <div class="tip" v-if="showTip">夜深了，注意休息</div>
+                <div class="label label-success" v-if="isWorkTime">工作时间</div>
+                <div class="label label-warning" v-if="!isWorkTime">休息时间</div>
+                <div class="tt-countdown">{{timeStr}}</div>
+                <div class="input-minute input-group">
+                    <input class="form-control" placeholder="工作时间" v-model="formData.minute">
+                    <div class="input-group-addon">分钟</div>
                 </div>
-            </main>
-            <ui-footer></ui-footer>
-            <!-- 声音提醒 -->
-            <audio id="tip">
-                <source src="/static/res/tip.mp3">
-                <source src="WhiteChristmas.ogg">
-            </audio>
+                <button class="btn-start btn btn-success" type="button" @click="startCount">开始计时</button>
+            </div>
+            <div class="col-md-6">
+            </div>
         </div>
-    </div>
+        <!-- 声音提醒 -->
+        <audio id="tip">
+            <source src="/static/res/tip.mp3">
+            <source src="WhiteChristmas.ogg">
+        </audio>
+    </ui-page>
 </template>
 
 <script>

@@ -1,19 +1,24 @@
 <template>
-    <ui-page name="todo" title="待办事项">
-        <div class="todo-box">
-            <form name="myForm">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="输入待办事项后回车" v-model="input" ng-keydown="inputEnter($event)" />
-                    <div class="input-group-btn">
-                        <button class="btn btn-success" @click.prevent="add()">添加</button>
+    <ui-page name="todo" :title="title">
+        <div class="container container-main">
+            <div class="todo-box">
+                <form name="myForm">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="输入待办事项后回车" v-model="input" ng-keydown="inputEnter($event)" />
+                        <div class="input-group-btn">
+                            <button class="btn btn-success" @click.prevent="add()">添加</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-            <div class="todo-list-empty" v-if="!todos.length">没有待办事项</div>
+                </form>
+                <div class="todo-list-empty" v-if="!todos.length">没有待办事项</div>
+            </div>
         </div>
         <section class="todo-box">
             <ui-list class="todo-list">
-                <ui-list-item disableRipple :title="todo.text" :class="{'done': todo.isDone}" @click="doCheck(todo)" v-for="todo in todos" :key="todo.id">
+                <ui-list-item disableRipple :title="todo.text" :class="{'done': todo.isDone}"
+                              @click="doCheck(todo)"
+                              v-for="todo in todos"
+                              :key="todo.id">
                     <ui-checkbox class="checkbox" v-model="todo.isDone" slot="left"/>
                     <ui-icon value="delete" slot="right" @click.stop="remove(todo)"/>
                 </ui-list-item>
@@ -26,6 +31,7 @@
     export default {
         data () {
             return {
+                title: '待办事项',
                 input: '',
                 todos: [],
                 showTip: false
@@ -37,19 +43,23 @@
         methods: {
             // 初始化
             init() {
+                let categories = this.$storage.get('categories')
+                let categoryId = this.$route.params.id
+                this.categoryId = categoryId
+                let category
+                for (let i = 0; i < categories.length; i++) {
+                    if (categories[i].id === categoryId) {
+                        category = categories[i]
+                        break
+                    }
+                }
+                this.title = category.name
+
                 // 初始化待办事项
                 let todos = this.$storage.get('todos')
-                if (todos) {
-                    this.todos = todos
-                } else {
-                    this.todos = [
-                        {
-                            id: this.getId(),
-                            text: '这是一个示范用例',
-                            isDone: false
-                        }
-                    ]
-                }
+                this.todos = todos.filter(item => {
+                    return item.categoryId === categoryId
+                })
             },
             add() {
                 if (!this.input) {
@@ -82,7 +92,8 @@
                     this.todos.unshift({
                         id: this.getId(),
                         text: this.input,
-                        isDone: false
+                        isDone: false,
+                        categoryId: this.categoryId
                     })
                     this.updateStorage()
                     this.input = ''
