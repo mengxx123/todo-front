@@ -1,5 +1,5 @@
 <template>
-    <ui-page title="帮助">
+    <my-page title="帮助">
         <article class="article">
             <h2>番茄工作法 – 做法</h2>
             <ol>
@@ -18,7 +18,7 @@
             </div>
 
         </article>
-    </ui-page>
+    </my-page>
 </template>
 
 <script>

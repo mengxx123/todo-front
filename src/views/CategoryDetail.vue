@@ -1,5 +1,5 @@
 <template>
-    <ui-page name="todo" :title="title">
+    <my-page name="todo" :title="title">
         <div class="container container-main">
             <div class="todo-box">
                 <form name="myForm">
@@ -24,7 +24,7 @@
                 </ui-list-item>
             </ui-list>
         </section>
-    </ui-page>
+    </my-page>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <ui-page name="todo" title="待办事项">
+    <my-page name="todo" title="待办事项">
         <div class="todo-box">
             <form name="myForm">
                 <div class="input-group">
@@ -19,7 +19,7 @@
                 </ui-list-item>
             </ui-list>
         </section>
-    </ui-page>
+    </my-page>
 </template>
 
 <script>

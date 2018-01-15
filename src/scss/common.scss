@@ -79,3 +79,34 @@ body {
 
 
 }
+
+.tomato-box {
+    .tt-countdown {
+        color: #999;
+        font-size: 100px;
+    }
+    .input-minute {
+        float: left;
+        width: 140px;
+    }
+    .btn-start {
+        float: left;
+        margin-left: 50px;
+    }
+}
+
+.todo-box {
+    max-width: 400px;
+}
+
+/* 番茄工作法步骤 */
+.progress-list {
+    li {
+        margin-top: 5px;
+        font-size: 18px;
+    }
+}
+.progress-notice {
+    margin-top: 50px;
+    font-size: 16px;
+}
