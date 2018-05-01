@@ -1,5 +1,5 @@
 <template>
-    <ui-page :title="title || page.title" ref="page">
+    <ui-page :title="title || page.title" :page="page" ref="page">
         <div slot="drawer">
             <ui-list @itemClick="toggle()">
                 <ui-list-item title="待办事项" to="/">

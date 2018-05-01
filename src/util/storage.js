@@ -16,11 +16,11 @@ const storage = {
             localStorage.setItem(prefix + key, JSON.stringify(value))
         }
     },
-    get (key) {
+    get (key, defaultValue) {
         // console.log('storage get ' + key)
         let item = localStorage.getItem(prefix + key)
         if (item === null) {
-            return null
+            return defaultValue || null
         }
         let ret = JSON.parse(item)
         if (ret && typeof ret === 'object') {
