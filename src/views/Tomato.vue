@@ -6,11 +6,14 @@
                 <div class="label label-success" v-if="isWorkTime">工作时间</div>
                 <div class="label label-warning" v-if="!isWorkTime">休息时间</div>
                 <div class="tt-countdown">{{timeStr}}</div>
-                <div class="input-minute input-group">
+                <!-- <div class="input-minute input-group">
                     <input class="form-control" placeholder="工作时间" v-model="formData.minute">
                     <div class="input-group-addon">分钟</div>
-                </div>
-                <button class="btn-start btn btn-success" type="button" @click="startCount">开始计时</button>
+                </div> -->
+                <ui-text-field v-model="formData.minute" label="工作时间（分钟）" />
+                <br>
+                <ui-raised-button primary label="开始工作" @click="startCount" />
+                <!-- <button class="btn-start btn btn-success" type="button" @click="startCount">开始计时</button> -->
             </div>
             <div class="col-md-6">
             </div>
@@ -95,6 +98,7 @@
                     second = (second < 10) ? ('0' + second) : second
     
                     this.timeStr = hour + ':' + minute + ':' + second
+                    document.title = this.timeStr
                 }
                 countTime()
                 this.timerId = setInterval(countTime, 1000)
@@ -103,5 +107,23 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.label-warning {
+    background-color: #f7a54a;
+}
+.label-success {
+    background-color: #5cb85c;
+}
 </style>

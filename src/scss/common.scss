@@ -5,7 +5,9 @@ body,
 }
 body {
 }
-
+* {
+    -webkit-overflow-scrolling : touch;
+}
 .page-footer {
     display: none;
     position: absolute;

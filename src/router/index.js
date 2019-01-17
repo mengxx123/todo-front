@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const About = resolve => require(['@/views/About'], resolve)
 const Todo = resolve => require(['@/views/Todo'], resolve)
 const CategoryDetail = resolve => require(['@/views/CategoryDetail'], resolve)
 const Tomato = resolve => require(['@/views/Tomato'], resolve)
-const Help = resolve => require(['@/views/Help'], resolve)
 
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
@@ -30,20 +28,6 @@ let routes = [
         component: Tomato,
         meta: {
             title: '番茄工作法'
-        }
-    },
-    {
-        path: '/about',
-        component: About,
-        meta: {
-            title: '关于'
-        }
-    },
-    {
-        path: '/help',
-        component: Help,
-        meta: {
-            title: '帮助'
         }
     },
     {

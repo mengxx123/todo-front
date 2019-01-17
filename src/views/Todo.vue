@@ -1,33 +1,31 @@
 <template>
     <my-page name="todo" title="待办事项" :page="page">
-        <div class="todo-box">
-            <form name="myForm">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="输入待办事项后回车" v-model="input" ng-keydown="inputEnter($event)" />
-                    <div class="input-group-btn">
-                        <button class="btn btn-success" @click.prevent="add()">添加</button>
-                    </div>
+        <div class="container">
+            <div class="todo-box">
+                <div class="search-box">
+                    <input class="input" v-model="input" @keydown="keydown($event)" placeholder="输入待办事项后回车">
+                    <ui-icon-button icon="add" title="添加" primary @click="add" />
                 </div>
-            </form>
-            <div class="todo-list-empty" v-if="!todos.length">没有待办事项</div>
-        </div>
-        <section class="todo-box">
-            <ui-list class="todo-list">
-                <ui-list-item disableRipple :title="todo.text" :class="{'done': todo.isDone}" @click="doCheck(todo)" v-for="todo in todos" :key="todo.id">
-                    <ui-checkbox class="checkbox" v-model="todo.isDone" slot="left"/>
-                    <ui-icon value="delete" slot="right" @click.stop="remove(todo)"/>
-                </ui-list-item>
-            </ui-list>
-        </section>
-        <ui-drawer class="io-box" right :open="open" :docked="false" @close="toggle()">
-            <ui-appbar title="导入导出">
-                <ui-icon-button icon="close" slot="left" @click="toggle" />
-                <ui-icon-button icon="check" slot="right" @click="finish" />
-            </ui-appbar>
-            <div class="body">
-                <textarea class="form-control" v-model="ioData"></textarea>
+                <div class="todo-list-empty" v-if="!todos.length">没有待办事项</div>
             </div>
-        </ui-drawer>
+            <section class="todo-box">
+                <ui-list class="todo-list">
+                    <ui-list-item disableRipple :title="todo.text" :class="{'done': todo.isDone}" @click="doCheck(todo)" v-for="todo in todos" :key="todo.id">
+                        <ui-checkbox class="checkbox" v-model="todo.isDone" slot="left"/>
+                        <ui-icon value="delete" slot="right" @click.stop="remove(todo)"/>
+                    </ui-list-item>
+                </ui-list>
+            </section>
+            <ui-drawer class="io-box" right :open="open" :docked="false" @close="toggle()">
+                <ui-appbar title="导入导出">
+                    <ui-icon-button icon="close" slot="left" @click="toggle" />
+                    <ui-icon-button icon="check" slot="right" @click="finish" />
+                </ui-appbar>
+                <div class="body">
+                    <textarea class="form-control" v-model="ioData"></textarea>
+                </div>
+            </ui-drawer>
+        </div>
     </my-page>
 </template>
 
@@ -85,6 +83,12 @@
                 this.$storage.set('todos', this.todos)
                 this.open = false
             },
+            keydown(e) {
+                console.log(e.keyCode)
+                if (e.keyCode === 13) {
+                    this.add()
+                }
+            },
             add() {
                 if (!this.input) {
                     // alert('请输入内容'); // TODO 输入框输入回车后也会执行到这里
@@ -134,6 +138,48 @@
 </script>
 
 <style lang="scss" scoped>
+.container {
+    width: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.search-box {
+    display: flex;
+    width: 400px;
+    max-width: 100%;
+    margin-bottom: 16px;
+    // border: 1px solid #eee;
+    box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
+    background-color: #fff;
+    &:hover {
+        box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+    }
+    .input {
+        flex-grow: 1;
+        display: block;
+        height: 48px;
+        padding: 0 16px;
+        line-height: 48px;
+        border: none;
+        outline: none;
+    }
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 33px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+textarea.form-control {
+    height: auto;
+}
 .io-box {
     width: 100%;
     max-width: 400px;

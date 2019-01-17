@@ -1,14 +1,15 @@
 <template>
     <ui-page :title="title || page.title" :page="page" ref="page">
         <div slot="drawer">
+            <div class="header">
+                <img class="logo" src="/static/img/logo.jpg">
+            </div>
             <ui-list @itemClick="toggle()">
                 <ui-list-item title="待办事项" to="/">
                 </ui-list-item>
                 <ui-list-item title="番茄工作法" to="/tomato">
                 </ui-list-item>
-                <ui-list-item title="帮助" to="/help">
-                </ui-list-item>
-                <ui-list-item title="关于" to="/about">
+                <ui-list-item title="关于/帮助" href="https://project.yunser.com/products/4b6f44905c5c11e888a50737631f72f2" target="_blank">
                 </ui-list-item>
             </ui-list>
             <ui-list v-if="categories.length" @itemClick="toggle()">
@@ -96,48 +97,19 @@
     }
 </script>
 
-<style lang="scss">
-    .ui-page {
+<style lang="scss" scoped>
+    .header {
+        padding: 40px 0;
+        border: 1px solid rgba(0,0,0,.12);
+    }
+    .logo {
+        display: block;
+        width: 80px;
+        margin: 0 auto;
+    }
+    .version {
         position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
-    .page-body {
-        min-height: 500px;
-    }
-    .container-main {
-        padding-top: 16px;
-    }
-    .page-content {
-        position: absolute;
-        top: 0;
-        left: 256px;
-        right: 0;
-        bottom: 0;
-    }
-    .page-container {
-        padding: 16px;
-    }
-    .admin-container {
-        padding: 16px;
-    }
-
-    .list-dialog {
-        width: 300px;
-    }
-    .page-nav {
-        position: absolute;
-        top: 0;
-        width: 256px;
-        bottom: 0;
-        border-right: 1px solid #eee;
-    }
-    .bottom-list {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        bottom: 16px;
+        left: 16px;
     }
 </style>
