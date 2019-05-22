@@ -2,12 +2,12 @@
     <ui-page :title="title || page.title" :page="page" ref="page">
         <div slot="drawer">
             <div class="header">
-                <img class="logo" src="/static/img/logo.jpg">
+                <img class="logo" src="/static/img/todo.svg">
             </div>
             <ui-list @itemClick="toggle()">
-                <ui-list-item title="待办事项" to="/">
+                <ui-list-item title="待办" to="/">
                 </ui-list-item>
-                <ui-list-item title="番茄工作法" to="/tomato">
+                <ui-list-item title="番茄钟" to="/tomato">
                 </ui-list-item>
                 <ui-list-item title="关于/帮助" href="https://project.yunser.com/products/4b6f44905c5c11e888a50737631f72f2" target="_blank">
                 </ui-list-item>

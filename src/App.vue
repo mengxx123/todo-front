@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="app">
-        <router-view/>
+        <router-view :key="$route.fullPath + $store.state.loginState"/>
     </div>
 </template>
 

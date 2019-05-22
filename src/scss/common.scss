@@ -1,12 +1,8 @@
-html,
-body,
-#app {
-    height: 100%;
-}
-body {
-}
-* {
-    -webkit-overflow-scrolling : touch;
+.common-container {
+    width: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px 16px 80px 16px;
 }
 .page-footer {
     display: none;
@@ -38,9 +34,9 @@ body {
 
 /* 待办事项 */
 .todo-list {
-    height: 400px;
+    // height: 400px;
     margin-top: 50px;
-    overflow: hidden;
+    // overflow: hidden;
 }
 .todo-list:hover {
     overflow-y: auto;
@@ -94,6 +90,13 @@ body {
     .btn-start {
         float: left;
         margin-left: 50px;
+    }
+}
+@media all and (max-width: 800px) {
+    .tomato-box {
+        .tt-countdown {
+            font-size: 60px;
+        }
     }
 }
 
