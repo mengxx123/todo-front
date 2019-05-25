@@ -6,10 +6,16 @@
             </div>
             <ui-list @itemClick="toggle()">
                 <ui-list-item title="待办" to="/">
+                    <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
                 <ui-list-item title="番茄钟" to="/tomato">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
+                <ui-list-item title="专注" to="/focus">
+                    <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
                 <ui-list-item title="关于/帮助" href="https://project.yunser.com/products/4b6f44905c5c11e888a50737631f72f2" target="_blank">
+                    <ui-icon slot="left" value="info"/>
                 </ui-list-item>
             </ui-list>
             <ui-list v-if="categories.length" @itemClick="toggle()">

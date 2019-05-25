@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const Todo = resolve => require(['@/views/Todo'], resolve)
 const CategoryDetail = resolve => require(['@/views/CategoryDetail'], resolve)
 const Tomato = resolve => require(['@/views/Tomato'], resolve)
+const Focus = resolve => require(['@/views/Focus'], resolve)
 const OauthCallback = resolve => require(['@/views/oauth/Callback'], resolve)
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
@@ -19,6 +20,10 @@ let routes = [
     {
         path: '/todo',
         component: Todo,
+    },
+    {
+        path: '/focus',
+        component: Focus,
     },
     {
         path: '/categories/:id',
